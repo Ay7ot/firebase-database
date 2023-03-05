@@ -1,9 +1,9 @@
 import { Link, Navigate } from 'react-router-dom'
 import { useAuth } from '../Contexts/AppContext'
-import { createUser, loginUser } from '../Functions/functions'
+import { createUser, forgotPassword, loginUser } from '../Functions/functions'
 import { useState, useEffect } from 'react'
 
-export default function Login() {
+export default function ForgotPassword() {
     
     const {currentUser, password, email, dispatch, signUpError } = useAuth()
     
@@ -15,26 +15,32 @@ export default function Login() {
         })
     },[])
     
-    async function handleLogin(e: React.FormEvent<HTMLFormElement>){
+    async function handlePasswordReset(e: React.FormEvent<HTMLFormElement>){
        
         e.preventDefault()
-        if(password === '' || email === ''){
+        if( email === ''){
             return dispatch({
                 type: 'setSignUpError',
                 payload: {
-                    signUpErrorPayload: 'Complete the form'
+                    signUpErrorPayload: 'Input your email'
                 }
             })
         }
         
         try{
             setLoading(true)
-            await loginUser(email, password)
+            await forgotPassword(email)
+            dispatch({
+                type: 'setSignUpError',
+                payload: {
+                    signUpErrorPayload: 'Message Sent to Inbox'
+                }
+            })
         }catch{
             dispatch({
                 type: 'setSignUpError',
                 payload: {
-                    signUpErrorPayload: 'Failed t0 sign Up'
+                    signUpErrorPayload: 'Failed to send email'
                 }
             })
         }
@@ -48,8 +54,8 @@ export default function Login() {
     return (
         <div className='min-h-screen flex flex-col justify-center items-center'>
             <h2 className='font-bold text-[2rem] mb-6 text-blue-400'>LOG IN</h2>
-            {signUpError !== '' && <p className='p-2 w-[300px] bg-red-400 mb-6 text-white'>{signUpError}</p>}
-            <form className='flex flex-col gap-5' onSubmit={handleLogin}>
+            {signUpError !== '' && <p className={`p-2 w-[300px] ${signUpError === 'Message Sent to Inbox' ? 'bg-green-400' : 'bg-red-400'} mb-6 text-white`}>{signUpError}</p>}
+            <form className='flex flex-col gap-5' onSubmit={handlePasswordReset}>
                 <input 
                     type='email'
                     value={email}
@@ -67,27 +73,11 @@ export default function Login() {
                     className='p-2 border-[2px] w-[300px] border-[#808080] focus:border-blue-400 outline-none'
                     placeholder='Email'
                 />
-                <input 
-                    type='password'
-                    value={password}
-                    name='Password'
-                    onChange={e => {
-                       return dispatch({
-                            type: 'setPassword',
-                            payload: {
-                                signUps:{
-                                    passwordPayload: e.target.value
-                                }
-                            }
-                        })
-                    }}
-                    className='p-2 border-[2px] w-[300px] focus:border-blue-400 outline-none border-[#808080]'
-                    placeholder='Password'
-                />
-                <Link to='/forgotPassword' className='text-blue-400'>Forgotten Password?</Link>
-                <button className='text-white w-[300px] p-4 bg-blue-400 rounded-lg text-[1.3rem] font-bold tracking-wide'>Login</button>
+                
+                
+                <button disabled={loading} className='text-white w-[300px] p-4 bg-blue-400 rounded-lg text-[1.3rem] font-bold tracking-wide'>Send Email</button>
             </form>
-            <p className='mt-6'>Need an account? <Link to='/signup' className='text-blue-400 '>Sign Up</Link></p>
+            <p className='mt-6'><Link to='/login' className='text-blue-400 '>Back to Login</Link></p>
         </div>
     )
 }

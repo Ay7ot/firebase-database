@@ -39,7 +39,7 @@ export const AppProvider = ({children}: {children: ReactNode}) => {
     },[])
     
     return (
-        <AppContext.Provider value={mainState}>
+        <AppContext.Provider value={{...mainState, dispatch}}>
             {!loading && children}
         </AppContext.Provider>
     )

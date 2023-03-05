@@ -7,6 +7,19 @@ export function appReducer(state: AppContextType, action: AppActionType): AppCon
                 ...state,
                 currentUser: action.payload?.currentUserPayload ?? null
             }
+        case 'setNoUser':
+            return {
+                ...state,
+                currentUser: null
+            }
+        case 'setNoParameter':
+            return {
+                ...state,
+                email: '',
+                password: '',
+                username: '',
+                signUpError: ''
+            }
         case 'setSignUpError':
             return {
                 ...state,

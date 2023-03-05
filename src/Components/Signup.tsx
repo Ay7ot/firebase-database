@@ -1,15 +1,20 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../Contexts/AppContext'
 import { createUser } from '../Functions/functions'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {Navigate} from 'react-router-dom'
 
 export default function Signup() {
     
     const {currentUser, username, password, email, dispatch, signUpError} = useAuth()
-    
-    console.log(username)
+
     const [loading, setLoading] = useState(false)
+    
+    useEffect(()=>{
+        dispatch({
+            type: 'setNoParameter'
+        })
+    },[])
     
     async function handleSignUp(e: React.FormEvent<HTMLFormElement>){
        
@@ -44,7 +49,7 @@ export default function Signup() {
     return (
         <div className='min-h-screen flex flex-col justify-center items-center'>
             <h2 className='font-bold text-[2rem] mb-6 text-blue-400'>SIGN UP</h2>
-            {signUpError !== '' && <p className='w-[300px] p-2 text-white bg-red-500'>{signUpError}</p>}
+            {signUpError !== '' && <p className='w-[300px] p-2 text-white bg-red-400 mb-6'>{signUpError}</p>}
             <form className='flex flex-col gap-5' onSubmit={handleSignUp}>
                 <input 
                     type='email'
@@ -98,7 +103,7 @@ export default function Signup() {
                     placeholder='Password'
                 />
                 
-                <button type='submit' className='text-white w-[300px] p-4 bg-blue-500 rounded-lg text-[1.3rem] font-bold tracking-wide'>Sign Up</button>
+                <button disabled={loading } type='submit' className='text-white w-[300px] p-4 bg-blue-500 rounded-lg text-[1.3rem] font-bold tracking-wide'>Sign Up</button>
             </form>
             <p className='mt-6'>Already have an account? <Link to='/login' className='text-blue-400 '>Log In</Link></p>
         </div>
