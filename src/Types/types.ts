@@ -20,5 +20,11 @@ export type AppActionType = {
             passwordPayload?: string
             emailPayload?: string
         }
-    }
+    }  
+}
+
+export type todoType = {
+    name: string;
+    id: string;
+    isComplete: boolean;
 }

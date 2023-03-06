@@ -35,8 +35,8 @@ export default function DashBoard() {
     }
     
     return (
-        <div className='flex items-center justify-center'>
-            <div className='m-2 rounded-md h-[80vh]'>
+        <div className='flex items-center justify-center min-h-screen'>
+            <div className='m-2 rounded-md bg-white flex items-center flex-col justify-center h-[95vh] w-full max-w-[450px]'>
                 <div>
                     <p>{currentTime}</p>
                 </div>
