@@ -34,7 +34,7 @@ export default function Login() {
             dispatch({
                 type: 'setSignUpError',
                 payload: {
-                    signUpErrorPayload: 'Failed t0 sign Up'
+                    signUpErrorPayload: 'Failed to sign Up'
                 }
             })
         }
