@@ -2,6 +2,7 @@ import { Link, Navigate } from 'react-router-dom'
 import { useAuth } from '../Contexts/AppContext'
 import { createUser, loginUser } from '../Functions/functions'
 import { useState, useEffect } from 'react'
+import Loader from './Loader'
 
 export default function Login() {
     
@@ -43,6 +44,10 @@ export default function Login() {
     
     if(currentUser){
         return <Navigate to ='/' />
+    }
+    
+    if(loading){
+        return <Loader />
     }
     
     return (

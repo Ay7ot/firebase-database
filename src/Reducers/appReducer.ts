@@ -45,6 +45,11 @@ export function appReducer(state: AppContextType, action: AppActionType): AppCon
                 ...state,
                 todo: action.payload?.todoPayload ?? ''
             }
+        case 'setNoTodos':
+            return {
+                ...state,
+                todos: []
+            }
         default :
             return {
                 ...state

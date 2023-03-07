@@ -3,6 +3,7 @@ import { useAuth } from '../Contexts/AppContext'
 import { createUser } from '../Functions/functions'
 import { useState, useEffect } from 'react'
 import {Navigate} from 'react-router-dom'
+import Loader from './Loader'
 
 export default function Signup() {
     
@@ -44,6 +45,10 @@ export default function Signup() {
     
     if(currentUser){
         return <Navigate to='/' />
+    }
+    
+    if(loading){
+        return <Loader />
     }
     
     return (

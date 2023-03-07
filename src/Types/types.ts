@@ -8,6 +8,7 @@ export type AppContextType = {
     dispatch: React.Dispatch<AppActionType>;
     signUpError: string;
     todo: string;
+    todos: todoType[]
 }
 
 export type AppActionType = {

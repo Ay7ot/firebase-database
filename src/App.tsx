@@ -8,7 +8,7 @@ import ForgotPassword from './Components/ForgotPassword'
 function App() {
 
   return (
-    <div className="bg-zinc-500 font-inter">
+    <div className="bg-[#222e50] font-inter min-h-screen">
       <AppProvider>
         <Router>
           <Routes>
