@@ -40,6 +40,11 @@ export function appReducer(state: AppContextType, action: AppActionType): AppCon
                 ...state,
                 username: action.payload?.signUps?.usernamePayload ?? ''
             }
+        case 'setTodo':
+            return {
+                ...state,
+                todo: action.payload?.todoPayload ?? ''
+            }
         default :
             return {
                 ...state

@@ -7,7 +7,7 @@ export type AppContextType = {
     email: string;
     dispatch: React.Dispatch<AppActionType>;
     signUpError: string;
-    
+    todo: string;
 }
 
 export type AppActionType = {
@@ -20,6 +20,7 @@ export type AppActionType = {
             passwordPayload?: string
             emailPayload?: string
         }
+        todoPayload?: string;
     }  
 }
 

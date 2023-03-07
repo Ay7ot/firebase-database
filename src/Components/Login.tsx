@@ -34,7 +34,7 @@ export default function Login() {
             dispatch({
                 type: 'setSignUpError',
                 payload: {
-                    signUpErrorPayload: 'Failed to sign Up'
+                    signUpErrorPayload: 'Failed to Log In'
                 }
             })
         }
@@ -64,7 +64,7 @@ export default function Login() {
                             }
                         })
                     }}
-                    className='p-2 border-[2px] w-[300px] border-[#808080] focus:border-blue-400 outline-none'
+                    className='p-2 border-[2px] w-[300px] border-[#808080] focus:border-blue-400 outline-none rounded-md'
                     placeholder='Email'
                 />
                 <input 
@@ -81,11 +81,11 @@ export default function Login() {
                             }
                         })
                     }}
-                    className='p-2 border-[2px] w-[300px] focus:border-blue-400 outline-none border-[#808080]'
+                    className='p-2 border-[2px] w-[300px] focus:border-blue-400 outline-none border-[#8a8383] rounded-md'
                     placeholder='Password'
                 />
                 <Link to='/forgotPassword' className='text-blue-400'>Forgotten Password?</Link>
-                <button className='text-white w-[300px] p-4 bg-blue-400 rounded-lg text-[1.3rem] font-bold tracking-wide'>Login</button>
+                <button disabled={loading} className='text-white w-[300px] p-4 bg-blue-400 rounded-lg text-[1.3rem] font-bold tracking-wide'>Login</button>
             </form>
             <p className='mt-6'>Need an account? <Link to='/signup' className='text-blue-400 '>Sign Up</Link></p>
         </div>

@@ -1,11 +1,11 @@
 import { Link, Navigate } from 'react-router-dom'
 import { useAuth } from '../Contexts/AppContext'
-import { createUser, forgotPassword, loginUser } from '../Functions/functions'
+import { forgotPassword } from '../Functions/functions'
 import { useState, useEffect } from 'react'
 
 export default function ForgotPassword() {
     
-    const {currentUser, password, email, dispatch, signUpError } = useAuth()
+    const {currentUser, email, dispatch, signUpError } = useAuth()
     
     const [loading, setLoading] = useState(false)
     
@@ -18,6 +18,7 @@ export default function ForgotPassword() {
     async function handlePasswordReset(e: React.FormEvent<HTMLFormElement>){
        
         e.preventDefault()
+        
         if( email === ''){
             return dispatch({
                 type: 'setSignUpError',
@@ -70,7 +71,7 @@ export default function ForgotPassword() {
                             }
                         })
                     }}
-                    className='p-2 border-[2px] w-[300px] border-[#808080] focus:border-blue-400 outline-none'
+                    className='p-2 border-[2px] w-[300px] border-[#808080] focus:border-blue-400 outline-none rounded-md'
                     placeholder='Email'
                 />
                 

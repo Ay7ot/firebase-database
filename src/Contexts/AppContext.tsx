@@ -9,7 +9,8 @@ const AppContext = createContext<AppContextType>({
     password: '',
     email: '',
     dispatch: () => {},
-    signUpError: ''
+    signUpError: '',
+    todo: ''
 })
 
 export const useAuth = () => {

@@ -65,7 +65,7 @@ export default function Signup() {
                             }
                         })
                     }}
-                    className='p-2 border-[2px] w-[300px] border-[#808080] focus:border-blue-400 outline-none'
+                    className='p-2 border-[2px] w-[300px] border-[#808080] focus:border-blue-400 outline-none rounded-md'
                     placeholder='Email'
                 />
                 <input 
@@ -82,7 +82,7 @@ export default function Signup() {
                             }
                         })
                     }}
-                    className='p-2 border-[2px] w-[300px] focus:border-blue-400 outline-none border-[#808080]'
+                    className='p-2 border-[2px] w-[300px] focus:border-blue-400 outline-none border-[#808080] rounded-md'
                     placeholder='Username'
                 />
                 <input 
@@ -99,7 +99,7 @@ export default function Signup() {
                             }
                         })
                     }}
-                    className='p-2 border-[2px] w-[300px] focus:border-blue-400 outline-none border-[#808080]'
+                    className='p-2 border-[2px] w-[300px] focus:border-blue-400 outline-none border-[#808080] rounded-md'
                     placeholder='Password'
                 />
                 
