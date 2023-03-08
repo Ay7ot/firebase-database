@@ -1,10 +1,6 @@
 import React from 'react'
 import { useAuth } from '../Contexts/AppContext'
 import { FaPlus } from 'react-icons/fa'
-import { ref, set } from 'firebase/database'
-import { db } from '../firebase'
-import { todoType } from '../Types/types'
-import { lazy } from 'react'
 import { nanoid } from 'nanoid'
 import { createTodo } from '../Functions/functions'
 
@@ -25,7 +21,7 @@ export default function InputForm() {
             <input 
                 className='bg-gray-200 p-2 rounded-md w-[90%] focus:border-blue-400 border-[2px] outline-none'
                 type='text'
-                placeholder='Note'
+                placeholder='Add Todo'
                 value={todo.name}
                 onChange={(e)=>{
                     dispatch({
