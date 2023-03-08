@@ -110,7 +110,7 @@ export default function Signup() {
                 
                 <button disabled={loading } type='submit' className='text-white w-[300px] p-4 bg-blue-500 rounded-lg text-[1.3rem] font-bold tracking-wide'>Sign Up</button>
             </form>
-            <p className='mt-6'>Already have an account? <Link to='/login' className='text-blue-400 '>Log In</Link></p>
+            <p className='mt-6 text-white'>Already have an account? <Link to='/login' className='text-blue-400 '>Log In</Link></p>
         </div>
     )
 }

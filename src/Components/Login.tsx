@@ -92,7 +92,7 @@ export default function Login() {
                 <Link to='/forgotPassword' className='text-blue-400'>Forgotten Password?</Link>
                 <button disabled={loading} className='text-white w-[300px] p-4 bg-blue-400 rounded-lg text-[1.3rem] font-bold tracking-wide'>Login</button>
             </form>
-            <p className='mt-6'>Need an account? <Link to='/signup' className='text-blue-400 '>Sign Up</Link></p>
+            <p className='mt-6 text-white'>Need an account? <Link to='/signup' className='text-blue-400 '>Sign Up</Link></p>
         </div>
     )
 }
