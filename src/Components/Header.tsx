@@ -28,7 +28,7 @@ export default function Header() {
         <div style={style} className='p-2'>
             <div className='relative mt-4'>
             <i onClick={handleLogout} className='font-bold text-[1.7rem] text-white absolute left-[90%]'><RiUserReceivedFill /></i>
-            <p>Welcome: {username}</p>
+            <p className='pt-[120px] text-right font-bold text-white text-[1.7rem]'>Welcome <span className='text-[#ff1028] font-extrabold text-[1.9rem]'>{username}</span>!</p>
             </div>
         </div>
     )
