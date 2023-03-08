@@ -36,12 +36,21 @@ export async function forgotPassword(email: string){
 }
 
 export function rearrangeArrayFromBack(arr: todoType[]) {
-    const newArr = [];
+    const newArray = [];
+    const completedTodos = [];
+  
     for (let i = arr.length - 1; i >= 0; i--) {
-      newArr.push(arr[i]);
+      const item = arr[i];
+  
+      if (item.isComplete) {
+        completedTodos.push(item);
+      } else {
+        newArray.push(item);
+      }
     }
-    return newArr;
-}
+  
+    return newArray.concat(completedTodos);
+  }
 
 export function logout(){
     signOut(auth)
