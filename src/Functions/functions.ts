@@ -1,4 +1,4 @@
-import { ref, set, push, orderByKey, get, Query } from "firebase/database";
+import { ref, set, push, update, onValue } from "firebase/database";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { todoType } from "../Types/types";
@@ -45,4 +45,21 @@ export function rearrangeArrayFromBack(arr: todoType[]) {
 
 export function logout(){
     signOut(auth)
+}
+
+export function markCompleteInDB(todo: todoType, username: string){
+    let newKey = ''
+    onValue(ref(db, 'users/'+username+'/todos'), snapshot=>{
+        const data = snapshot.val()
+        for(let key in data){
+            if(data[key].id === todo.id){
+               newKey = key 
+            }
+        }
+    })
+    update(ref(db, 'users/'+username+'/todos/'+newKey),{
+        name: todo.name,
+        id: todo.id,
+        isComplete: !todo.isComplete
+    })
 }
