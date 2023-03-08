@@ -9,13 +9,37 @@ import { todoType } from '../Types/types'
 import InputForm from './InputForm'
 import Todos from './Todos'
 import Header from './Header'
+import Loader from './Loader'
 
 export default function DashBoard() {
-    const { currentUser } = useAuth()
+    const { currentUser, dispatch , username} = useAuth()
 
+    useEffect(()=>{
+        onValue(ref(db, '/users'), snapshot=>{
+         const data = snapshot.val()
+         if(data !== null){
+            for(let key in data) {
+               if(data[key].email === currentUser?.email){
+                    dispatch({
+                        type: 'setUsername',
+                        payload: {
+                            signUps:{
+                                usernamePayload: data[key].username
+                            }
+                        }
+                    })
+               }
+            }
+        }
+        }) 
+    },[])
     
     if(!currentUser){
         return <Navigate to='/login' />
+    }
+    
+    if(username === ''){
+        return <Loader />
     }
     
     return (

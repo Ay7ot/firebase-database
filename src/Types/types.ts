@@ -7,7 +7,7 @@ export type AppContextType = {
     email: string;
     dispatch: React.Dispatch<AppActionType>;
     signUpError: string;
-    todo: string;
+    todo: todoType;
     todos: todoType[]
 }
 
@@ -21,12 +21,17 @@ export type AppActionType = {
             passwordPayload?: string
             emailPayload?: string
         }
-        todoPayload?: string;
+        todoPayload?: {
+            name?: string,
+            isComplete?: boolean,
+            id?: string
+        };
+        todosPayload?: todoType[];
     }  
 }
 
 export type todoType = {
     name: string;
-    id: string;
-    isComplete: boolean;
+    id?: string;
+    isComplete?: boolean;
 }

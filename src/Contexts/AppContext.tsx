@@ -10,7 +10,11 @@ const AppContext = createContext<AppContextType>({
     email: '',
     dispatch: () => {},
     signUpError: '',
-    todo: '',
+    todo: {
+        name: '',
+        id: '',
+        isComplete: false
+    },
     todos: []
 })
 

@@ -6,27 +6,7 @@ import { onValue, ref } from 'firebase/database'
 import { db } from '../firebase'
 
 export default function Header() {
-    const {currentUser, dispatch, username} = useAuth()
-    
-    useEffect(()=>{
-        onValue(ref(db, '/users'), snapshot=>{
-         const data = snapshot.val()
-         if(data !== null){
-            for(let key in data) {
-               if(data[key].email === currentUser?.email){
-                    dispatch({
-                        type: 'setUsername',
-                        payload: {
-                            signUps:{
-                                usernamePayload: data[key].username
-                            }
-                        }
-                    })
-               }
-            }
-        }
-        }) 
-    },[])
+    const { dispatch, username} = useAuth()
     
     const style={
         height: '200px',

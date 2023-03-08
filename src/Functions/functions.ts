@@ -15,8 +15,9 @@ export async function createUser(username: string, email: string, password: stri
     await createUserWithEmailAndPassword(auth, email, password)
 }
 
-export function createTodo(username: string, todo: todoType){
-    const reference = ref(db, '/users' + username + '/todos')
+
+export async function createTodo(username: string, todo: todoType){
+    const reference = ref(db, 'users/' + username + '/todos/' + todo.name)
     
     set(reference, {
         name: todo.name,
