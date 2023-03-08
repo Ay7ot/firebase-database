@@ -10,11 +10,15 @@ import InputForm from './InputForm'
 import Todos from './Todos'
 import Header from './Header'
 import Loader from './Loader'
+import { useLocation } from 'react-router-dom'
 
 export default function DashBoard() {
     const { currentUser, dispatch , username} = useAuth()
 
+    const location = useLocation()
+    
     useEffect(()=>{
+        window.scrollTo(0, 0);
         onValue(ref(db, '/users'), snapshot=>{
          const data = snapshot.val()
          if(data !== null){
@@ -32,7 +36,7 @@ export default function DashBoard() {
             }
         }
         }) 
-    },[])
+    },[location.pathname])
     
     if(!currentUser){
         return <Navigate to='/login' />
