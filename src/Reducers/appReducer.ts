@@ -67,6 +67,11 @@ export function appReducer(state: AppContextType, action: AppActionType): AppCon
                 ...state,
                 todos: action.payload?.todosPayload ?? []
             }
+        case 'setTodoError':
+            return {
+                ...state,
+                todoError: action.payload?.todoErrorPayload ?? ''
+            }
         default :
             return {
                 ...state

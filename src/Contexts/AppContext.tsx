@@ -15,7 +15,8 @@ const AppContext = createContext<AppContextType>({
         id: '',
         isComplete: false
     },
-    todos: []
+    todos: [],
+    todoError: ''
 })
 
 export const useAuth = () => {
