@@ -15,12 +15,12 @@ export default function Todos() {
     const [loading, setLoading] = useState(false)
     
     useEffect(()=>{
+        dispatch({
+            type: 'setNoTodos'
+        })
         onValue(ref(db, `users/${username}/todos`), snapshot=>{
             const data = snapshot.val()
             if(data!== null){
-                dispatch({
-                    type: 'setNoTodos'
-                })
                 let dataArray = []
                 for(let key in data){
                     let item = data[key]
