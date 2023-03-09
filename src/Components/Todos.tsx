@@ -3,14 +3,14 @@ import {useEffect, useState} from 'react'
 import { useAuth } from '../Contexts/AppContext'
 import { db } from '../firebase'
 import { todoType } from '../Types/types'
-import {BsCheck, BsCheck2, BsCheckCircle} from 'react-icons/bs'
+import {BsCheck} from 'react-icons/bs'
 import {MdDeleteForever} from 'react-icons/md'
 import { markCompleteInDB, rearrangeArrayFromBack } from '../Functions/functions'
-import { func } from 'prop-types'
 
 export default function Todos() {
     
     const { todos, dispatch, username } = useAuth()
+   
     const [numTodos, setNumTodos] = useState(0)
     const [loading, setLoading] = useState(false)
     
@@ -38,7 +38,7 @@ export default function Todos() {
                 setNumTodos(0)
             }
         })
-    },[])
+    },[username])
 
     function removeTodo(todo: todoType){
         setLoading(true)
