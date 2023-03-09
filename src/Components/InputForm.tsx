@@ -32,7 +32,7 @@ export default function InputForm() {
             <input 
                 className='bg-gray-200 p-2 rounded-md w-[90%] focus:border-blue-400 border-[2px] outline-none'
                 type='text'
-                placeholder='Add Todo'
+                placeholder='Add task'
                 value={todo.name}
                 onChange={(e)=>{
                     dispatch({
