@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react'
 import { useAuth } from '../Contexts/AppContext'
 import { db } from '../firebase'
 import { todoType } from '../Types/types'
-import {BsCheckCircle} from 'react-icons/bs'
+import {BsCheck, BsCheck2, BsCheckCircle} from 'react-icons/bs'
 import {MdDeleteForever} from 'react-icons/md'
 import { markCompleteInDB, rearrangeArrayFromBack } from '../Functions/functions'
 import { func } from 'prop-types'
@@ -74,7 +74,7 @@ export default function Todos() {
                     <div key={todo.id} className='min-h-[50px] bg-[#e8e4e4f2] rounded-md mb-2 p-2 flex items-center justify-between gap-2'>
                        <p className='text-gray-600 font-semibold '>{todo.name}</p> 
                        <div className='flex items-center gap-3'>
-                            <button disabled={loading} onClick={()=>markTodoComplete(todo)} className='rounded-full text-green-500 border-[2px] border-green-500 w-[20px] h-[20px] flex items-center justify-center'>{todo.isComplete && <BsCheckCircle />}</button>
+                            <button disabled={loading} onClick={()=>markTodoComplete(todo)} className='rounded-full text-green-500 border-[2px] border-green-500 w-[20px] h-[20px] flex items-center justify-center'>{todo.isComplete && <BsCheck />}</button>
                             <button disabled={loading} onClick={()=>removeTodo(todo)} className='text-red-500 text-[1.5rem]'><MdDeleteForever /></button>
                        </div>
                     </div>
